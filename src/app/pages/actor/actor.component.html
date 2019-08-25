@@ -1,0 +1,55 @@
+<div class="card">
+    <h2>Actor</h2>
+    <div class="title ">Crea o actualiza cada actor</div>
+    <div class="desc ">
+        <form (ngSubmit)="guardar(f)" #f="ngForm">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group ">
+                        <label>ID</label>
+                        <input type="text " class="form-control " disabled placeholder="ID del actor" name="id" [(ngModel)]="actor.id">
+                        <small class="form-text text-muted ">El ID se genera automáticamente</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group ">
+                        <label>Nombre</label>
+                        <input type="text " class="form-control " placeholder="Nombre del actor" name="nombre" [(ngModel)]="actor.name" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group ">
+                        <label>País</label>
+                        <select class="form-control" name="pais_id" [(ngModel)]="actor.pais_id" required>
+                              <option *ngFor="let pais of paises" value="{{pais.id}}">{{pais.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Edad</label>
+                        <input type="number" class="form-control" placeholder="Edad del actor" name="age" [(ngModel)]="actor.age " required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label>URL de la Imagen del actor</label>
+                <input type="text " class="form-control " placeholder="URL de la Imagen del actor " name="image " [(ngModel)]="actor.image " required>
+            </div>
+            <br>
+            <div class="actions ">
+                <a [routerLink]="[ '/actors'] "><i class="fa fa-arrow-left "></i></a>
+                <button type="submit " class="btn btn-danger ">
+                  <i class="fa fa-save "></i>
+                </button>
+                <a [routerLink]="[ '/actors'] "><i class="fas fa-times "></i></a>
+            </div>
+        </form>
+    </div>
+    <svg viewBox="0 0 100 100 ">
+          <image xlink:href="https://image.flaticon.com/icons/png/512/1154/1154989.png " x=25 y=20 width=50 height=50  *ngIf="!actor.image"/>
+          <image  [attr.xlink:href]="actor.image"  x=25 y=20 width=50 height=50 *ngIf="actor.image" />
+    </svg>
+</div>

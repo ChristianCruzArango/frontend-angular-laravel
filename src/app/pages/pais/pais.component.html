@@ -1,0 +1,30 @@
+<div class="card">
+    <h2>Países</h2>
+    <div class="title ">Crea o actualiza los países</div>
+    <div class="desc ">
+        <form (ngSubmit)="guardar(f)" #f="ngForm">
+            <div class="form-group ">
+                <label>ID</label>
+                <input type="text " class="form-control " disabled placeholder="ID del país" name="id" [(ngModel)]="pais.id">
+                <small class="form-text text-muted ">El ID se genera automáticamente</small>
+            </div>
+            <div class="form-group ">
+                <label>Nombre</label>
+                <input type="text " class="form-control " placeholder="Nombre del país" name="nombre" [(ngModel)]="pais.name" #nombre="ngModel" required>
+                <!-- <div *ngIf="nombre.errors?.required" class="form-control-feedback">
+                    Este campo es requerido
+                </div> -->
+            </div>
+            <div class="actions ">
+                <a [routerLink]="[ '/paises'] "><i class="fa fa-arrow-left "></i></a>
+                <button type="submit" class="btn btn-danger">
+                  <i class="fa fa-save"></i>
+                </button>
+                <a [routerLink]="[ '/paises'] "><i class="fas fa-times "></i></a>
+            </div>
+        </form>
+    </div>
+    <svg viewBox="0 0 100 100 ">
+          <image xlink:href="https://img6.androidappsapk.co/300/6/1/d/com.sfy.android.paisesycapitales.png " x=25 y=20 width=50 height=50 />
+    </svg>
+</div>

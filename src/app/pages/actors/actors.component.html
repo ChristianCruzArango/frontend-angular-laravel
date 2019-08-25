@@ -1,0 +1,43 @@
+<app-jumbotron [title]="listado"></app-jumbotron>
+<hr>
+
+<div class="container">
+    <app-flotante-button></app-flotante-button>
+</div>
+
+<div class="card-columns" *ngIf="!cargando  && actors.length > 0">
+    <div class="card animated fadeIn fast" *ngFor="let actor of actors;let i = index">
+        <br>
+        <img [src]="actor.image" class="card-img-top " [alt]="actor.name">
+        <div class="card-body ">
+            <h5 class="card-title text-center ">{{actor.name}}</h5>
+            <p class="card-text ">Edad: {{actor.age}}</p>
+            <p class="card-text "><small class="text-muted ">País de Nacimiento: {{actor.pais_id}}</small></p>
+            <div class="actions ">
+                <button type="button" class="btn btn-success" [routerLink]="['/actor',actor.id]">
+                    <i class=" fa fa-pen"></i>
+                </button>
+                <button type="button" class="btn btn-danger" (click)="borrarActor(actor,i)">
+                  <i class=" fa fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning text-center mt-3 animated fadeIn faster" *ngIf="!cargando && actors.length === 0">
+    <h4 class="alert-heading">No hay datos</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div class="alert alert-info text-center mt-3 animated fadeIn faster" *ngIf="cargando">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>

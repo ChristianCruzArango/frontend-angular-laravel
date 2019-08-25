@@ -1,0 +1,47 @@
+<app-jumbotron [title]="listado"></app-jumbotron>
+<hr>
+
+<div class="container">
+    <app-flotante-button></app-flotante-button>
+</div>
+
+<div class="card-columns" *ngIf="!cargando  && heroes.length > 0">
+    <div class="card animated fadeIn fast" *ngFor="let heroe of heroes; let i = index">
+        <br>
+        <img [src]="heroe.image" class="card-img-top " [alt]="heroe.name">
+        <div class="card-body ">
+            <h5 class="card-title text-center">{{heroe.name}}</h5>
+            <p class="card-text">Actor:<img [src]="heroe.actor_img" class="card-img-actor" [alt]="heroe.actor_id"></p>
+            <p class="card-text "><small class="text-muted "></small></p>
+            <div class="actions ">
+                <button type="button" class="btn btn-success" [routerLink]="['/superheroe',heroe.id]">
+                  <i class=" fa fa-pen"></i>
+              </button>
+                <div>
+                    <img src="http://www.mhsroundtable.com/wp-content/uploads/2018/12/download-2.jpg" class="card-img-house" [alt]="heroe.house" *ngIf="heroe.house == 'marvel'">
+                    <img src="https://cdn.iconscout.com/icon/free/png-256/dc-9-285197.png" class="card-img-house " [alt]="heroe.house" *ngIf="heroe.house == 'dc'">
+                </div>
+                <button type="button" class="btn btn-danger" (click)="borrarHeroe(heroe,i)">
+                <i class=" fa fa-trash"></i>
+              </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning text-center mt-3 animated fadeIn faster" *ngIf="!cargando && heroes.length === 0">
+    <h4 class="alert-heading">No hay datos</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div class="alert alert-info text-center mt-3 animated fadeIn faster" *ngIf="cargando">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>

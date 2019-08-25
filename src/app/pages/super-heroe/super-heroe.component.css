@@ -1,0 +1,82 @@
+.card {
+    background-image: linear-gradient(to right top, #f0eae8, #9c6257, #742525, #f34463, #eb1212);
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px rgba(42, 39, 70, 1);
+    width: 70%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: "svg svg h2 h2 h2" "svg svg title title title" "svg svg desc desc desc" "svg svg actions actions actions";
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto auto auto 80px;
+    align-items: center;
+    transition: all ease 0.3s;
+    cursor: pointer;
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card:hover {
+    box-shadow: 8px 8px 15px rgba(42, 39, 70, 0.5);
+    transform: scale(1.05);
+}
+
+.card h2 {
+    grid-area: h2;
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
+    font-size: 2.4rem;
+}
+
+.card .title {
+    grid-area: title;
+    text-align: center;
+    padding: 0.25rem 1rem;
+    font-size: 1.5rem;
+}
+
+.card .desc {
+    grid-area: desc;
+    padding: 0.5rem 1rem;
+    transition: all ease 1s;
+}
+
+.card:hover {
+    box-shadow: 8px 8px 15px rgba(42, 39, 70, 0.5);
+    transform: scale(1.05);
+}
+
+.card .actions {
+    grid-area: actions;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card a {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.card svg {
+    grid-area: svg;
+    width: 80%;
+    height: 50%;
+    margin: 0 auto;
+    border: 3px solid #ccc;
+    border-radius: 50%;
+    background-color: #f8f8f8;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="card"] {
+        width: 100%;
+    }
+}
+
+.texto {
+    text-transform: uppercase;
+}
